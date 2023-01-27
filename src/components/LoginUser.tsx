@@ -1,14 +1,17 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCurrentUserName } from "../slice/app.slice";
+import { setCurrentUserName } from "../slices/app.slice";
 
 export const LoginUser: FC = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
   return (
-    <Box height="100%" display="flex">
+    <Box height="100%" display="flex" flexDirection="column">
+      <Typography color="white" variant="h3" fontFamily="cursive" m="8px auto">
+        Tic Tak Toe
+      </Typography>
       <Stack
         direction="column"
         gap="20px"
@@ -26,18 +29,8 @@ export const LoginUser: FC = () => {
           onChange={({ target: { value } }) => setValue(value)}
         />
         <Button
-          sx={{
-            backgroundColor: "#7321DB",
-            color: "white",
-            "&:hover": { opacity: 0.7, backgroundColor: "#7321DB" },
-            "&:disabled": {
-              opacity: 0.4,
-              backgroundColor: "#7321DB",
-              color: "white",
-            },
-          }}
           disabled={!value}
-          variant="text"
+          variant="contained"
           onClick={() => dispatch(setCurrentUserName(value))}
         >
           Login

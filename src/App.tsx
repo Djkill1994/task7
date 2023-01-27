@@ -5,13 +5,14 @@ import { LoginUser } from "./components/LoginUser";
 import { Game } from "./components/Game";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
+import { Lobby } from "./components/Lobby";
 
 export const App: FC = () => {
   const { currentUserName } = useSelector((state: RootState) => state.app);
   return (
     <Box height="100vh" bgcolor="#202135">
       <Toaster position="top-right" />
-      {currentUserName ? <Game /> : <LoginUser />}
+      {currentUserName ? <Lobby /> : <LoginUser />}
     </Box>
   );
 };

@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { rtkQueryMessenger } from "./middleware/rtkQueryMessenger";
-import { appSlice } from "./slice/app.slice";
+import { rtkQueryMessenger } from "./middlewares/rtkQueryMessenger";
+import { appSlice } from "./slices/app.slice";
 
 export const store = configureStore({
   reducer: {
