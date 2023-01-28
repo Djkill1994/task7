@@ -2,14 +2,17 @@ import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentUserName } from "../slices/app.slice";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_PATHS } from "../App";
 
 export const LoginUser: FC = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <Box height="100%" display="flex" flexDirection="column">
-      <Typography color="white" variant="h3" fontFamily="cursive" m="8px auto">
+      <Typography variant="h3" fontFamily="cursive" m="8px auto">
         Tic Tak Toe
       </Typography>
       <Stack
@@ -21,7 +24,7 @@ export const LoginUser: FC = () => {
         p="52px"
         borderRadius="8px"
       >
-        <Typography variant="h5" color="white">
+        <Typography variant="h5" fontFamily="cursive">
           Enter your name please.
         </Typography>
         <TextField
@@ -31,7 +34,10 @@ export const LoginUser: FC = () => {
         <Button
           disabled={!value}
           variant="contained"
-          onClick={() => dispatch(setCurrentUserName(value))}
+          onClick={() => {
+            dispatch(setCurrentUserName(value));
+            navigate(ROUTE_PATHS.Games, { replace: true });
+          }}
         >
           Login
         </Button>
