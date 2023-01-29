@@ -3,12 +3,15 @@ import { FC } from "react";
 import { GameStatusSection } from "./GameStatusSection";
 import { GameBoardSection } from "./GameBoardSection";
 import { GameInfoSection } from "./GameInfoSection";
-import { useGetGameQuery } from "../api/games";
-import { useParams } from "react-router-dom";
+import { useWinnerEffect } from "../hooks/useWinnerEffect";
+import { UseInitGameEffect } from "../hooks/useInitGameEffect";
+import { useGame } from "../hooks/useGame";
 
 export const Game: FC = () => {
-  const { gameId } = useParams();
-  const { data } = useGetGameQuery(gameId || "", { skip: !gameId });
+  const { status } = useGame();
+
+  useWinnerEffect();
+  UseInitGameEffect();
 
   return (
     <Stack
@@ -24,7 +27,7 @@ export const Game: FC = () => {
       </Typography>
       <GameStatusSection />
       <GameBoardSection />
-      <GameInfoSection />
+      {status !== "waiting" && <GameInfoSection />}
     </Stack>
   );
 };

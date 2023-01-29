@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const INIT_BOARD = [null, null, null, null, null, null, null, null, null];
+import { INIT_BOARD } from "../constants";
 
 export type ShapeType = "x" | "o";
 export type StatusType = "waiting" | "starting" | "end";
+type BoardType = string | null;
 
 export interface IGame {
   id: string;
-  board?: string[];
+  board?: BoardType[];
   player1Shape?: ShapeType;
   player2Shape?: ShapeType;
   turn?: string;
@@ -71,6 +71,14 @@ export const gamesApi = createApi({
         };
       },
     }),
+    deleteGame: build.mutation<void, string>({
+      query(id) {
+        return {
+          url: `/records/${id}`,
+          method: "DELETE",
+        };
+      },
+    }),
   }),
 });
 
@@ -79,4 +87,5 @@ export const {
   useUpdateGameMutation,
   useGetGameQuery,
   useGetGamesQuery,
+  useDeleteGameMutation,
 } = gamesApi;

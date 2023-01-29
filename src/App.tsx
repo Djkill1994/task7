@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Toaster } from "react-hot-toast";
 import { Box } from "@mui/material";
 import { LoginUser } from "./components/LoginUser";
 import { Game } from "./components/Game";
@@ -28,7 +27,6 @@ export const App: FC = () => {
 
   return (
     <Box height="100vh" bgcolor="#202135">
-      <Toaster position="top-right" />
       <Routes>
         <Route path={ROUTE_PATHS.Login} element={<LoginUser />} />
         <Route

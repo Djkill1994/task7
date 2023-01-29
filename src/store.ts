@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { rtkQueryMessenger } from "./middlewares/rtkQueryMessenger";
 import { appSlice } from "./slices/app.slice";
 import { gamesApi } from "./api/games";
 
@@ -10,7 +9,7 @@ export const store = configureStore({
     [gamesApi.reducerPath]: gamesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(rtkQueryMessenger, gamesApi.middleware),
+    getDefaultMiddleware().concat(gamesApi.middleware),
 });
 
 setupListeners(store.dispatch);

@@ -17,7 +17,7 @@ export const CreateGameModal: FC<IProps> = ({ onClose }) => {
   const [createGame, { data }] = useCreateGameMutation();
   const { currentUserName } = useSelector((state: RootState) => state.app);
 
-  const onSubmit = () => {
+  const onSubmit: VoidFunction = () => {
     createGame({ title: value, currentUserName });
   };
 
