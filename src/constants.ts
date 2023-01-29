@@ -30,7 +30,7 @@ export const CROSS_LINE_POSITIONS = [
   { top: "53px", left: "55px", width: "245px" },
   { top: "172px", left: "55px", width: "245px" },
   { top: "290px", left: "55px", width: "245px" },
-  { top: "170px", left: "-63px", width: "245px" },
+  { top: "170px", left: "-63px", width: "245px", transform: "rotate(90deg)" },
   { top: "170px", left: "55px", transform: "rotate(90deg)", width: "245px" },
   { top: "175px", left: "174px", transform: "rotate(90deg)", width: "245px" },
   { top: "172px", left: "21px", width: "310px", transform: "rotate(45deg)" },
